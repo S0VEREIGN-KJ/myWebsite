@@ -1,0 +1,345 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Welcome, {{ request.user.username }}!</h1>  <!-- Display the username of the logged-in user -->
+
+
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"> <!-- Google Fonts Link for Icons -->
+        <style>
+            /* Styles */
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+            * {
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Poppins", sans-serif;
+            }
+    
+            html {
+                touch-action: manipulation; /* Prevents double-tap zoom */
+                -ms-touch-action: manipulation; /* For older IE/Edge */
+            }
+    
+            body {
+                background: #E3F2FD;
+            }
+            h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin: auto;
+        }
+
+        .logout-container {
+            position: absolute;
+            bottom: 20px; /* Positions the logout button slightly above the bottom */
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .logout-container button {
+            display: flex;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .logout-container button:hover {
+            background-color: #d32f2f;
+        }
+            .chatbot-toggler {
+                position: absolute;
+                right: 770px;
+                bottom: 200px;
+                height: 50px;
+                width: 50px;
+                background: #724ae8;
+                color: #fff;
+                border: none;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+    
+            .chatbot {
+                position: fixed;
+                right: 750px;
+                bottom: 200px;
+                width: 420px;
+                height: 650px;
+                background: #fff;
+                border-radius: 15px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                display: none;
+                flex-direction: column;
+            }
+    
+            .chatbot header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #724ae8;
+                padding: 15px;
+                color: #fff;
+                font-size: 1.2rem;
+                border-radius: 15px 15px 0 0;
+            }
+    
+            .chatbot header .close-btn {
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 2.5rem;
+                cursor: pointer;
+            }
+            .chatbox {
+                flex: 1;
+                overflow-y: auto;
+                padding: 20px;
+            }
+    
+            .chat {
+                display: flex;
+                margin: 10px 0;
+            }
+    
+            .chat p {
+                padding: 10px 15px;
+                border-radius: 10px;
+                font-size: 0.9rem;
+            }
+    
+            .chat.incoming p {
+                background: #f2f2f2;
+                color: #000;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+    
+            .chat.outgoing p {
+                background: #724ae8;
+                color: #fff;
+                margin-left: auto;
+            }
+    
+            .dialog-options {
+                display: flex;
+                gap: 10px;
+                margin-top: 10px;
+                margin-right: 10px;
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+    
+            .dialog-options button {
+                background: #e0e0e0;
+                border: none;
+                border-radius: 5px;
+                padding: 8px 12px;
+                cursor: pointer;
+            }
+    
+            .dialog-options button:hover {
+                background: #ccc;
+            }
+            
+        </style>
+    </head>
+    
+    <body>
+        <button class="chatbot-toggler">Chat</button>
+        <div class="chatbot">
+            <header>
+                <span>RULE BASED CHATBOT</span>
+                <button class="close-btn" onclick="closeChatbot()">×</button>
+            </header>
+            <div class="chatbox"></div>
+            
+            <div class="dialog-options"></div>
+        </div>
+    
+        <script>
+            const chatbotToggler = document.querySelector('.chatbot-toggler');
+            const chatbot = document.querySelector('.chatbot');
+            const chatbox = document.querySelector('.chatbox');
+            const dialogOptions = document.querySelector('.dialog-options');
+    
+            const dialogFlow = {
+        start: {
+            message: "Hi there! I'm here to support your mental well-being. How can I assist you today?",
+            options: [
+                { label: "Talk about feelings", next: "feelings" },
+                { label: "Learn coping strategies", next: "coping" },
+                { label: "Connect with a professional", next: "professional" }
+            ]
+        },
+        feelings: {
+            message: "I'm here to listen. Can you share how you're feeling?",
+            options: [
+                { label: "I'm feeling anxious", next: "anxiety" },
+                { label: "I'm feeling down", next: "low_mood" },
+                { label: "Go back", next: "start" }
+            ]
+        },
+        anxiety: {
+            message: "I'm sorry to hear you're feeling anxious. Here are some strategies that might help:",
+            options: [
+                { label: "Breathing exercises", next: "breathing" },
+                { label: "Talk to someone", next: "professional" },
+                { label: "Go back", next: "feelings" }
+            ]
+        },
+        low_mood: {
+            message: "I'm sorry to hear you're feeling down. Here are some options that might help:",
+            options: [
+                { label: "Positive affirmations", next: "affirmations" },
+                { label: "Connect with a professional", next: "professional" },
+                { label: "Go back", next: "feelings" }
+            ]
+        },
+        breathing: {
+            message: "Breathing exercises can help calm your mind. Try inhaling for 4 seconds, holding for 7 seconds, and exhaling for 8 seconds.",
+            options: [
+                { label: "More help", next: "anxiety" },
+                { label: "End chat", next: null }
+            ]
+        },
+        affirmations: {
+            message: "Here are some affirmations to try: 'I am strong and capable', 'This feeling will pass', 'I am worthy of love and happiness'.",
+            options: [
+                { label: "More help", next: "low_mood" },
+                { label: "End chat", next: null }
+            ]
+        },
+        coping: {
+            message: "Coping strategies can help manage stress and emotions. Which would you like to explore?",
+            options: [
+                { label: "Mindfulness", next: "mindfulness" },
+                { label: "Physical activity", next: "physical_activity" },
+                { label: "Go back", next: "start" }
+            ]
+        },
+        mindfulness: {
+            message: "Mindfulness involves being present in the moment. Try a simple activity like focusing on your breath or noticing sensations around you.",
+            options: [
+                { label: "More coping strategies", next: "coping" },
+                { label: "End chat", next: null }
+            ]
+        },
+        physical_activity: {
+            message: "Physical activity can help release stress. Even a short walk or stretching can make a difference.",
+            options: [
+                { label: "More coping strategies", next: "coping" },
+                { label: "End chat", next: null }
+            ]
+        },
+        professional: {
+            message: "Connecting you to a mental health professional... Please wait.",
+            options: [
+                { label: "Go back", next: "start" },
+                { label: "End chat", next: null }
+            ]
+        }
+    };
+    
+        const loadDialog = (step) => {
+            const currentStep = dialogFlow[step];
+    
+            // Display the chatbot's thinking message
+            chatbox.innerHTML += `
+                <div class="chat incoming thinking">
+                    <div class="chat-icon">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                    </div>
+                    <div class="chat-text">
+                        <p>Thinking...</p>
+                    </div>
+                </div>`;
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+    
+            // Simulate a 1-second delay before showing the next dialog
+            setTimeout(() => {
+                const thinkingElement = document.querySelector('.thinking');
+                if (thinkingElement) thinkingElement.remove(); // Remove the thinking message
+    
+                if (!currentStep) {
+                    chatbox.innerHTML += `
+                        <div class="chat incoming">
+                            <div class="chat-icon">
+                                <span class="material-symbols-outlined">smart_toy</span>
+                            </div>
+                            <div class="chat-text">
+                                <p>Thank you for chatting with us!</p>
+                            </div>
+                        </div>`;
+                    dialogOptions.innerHTML = '';
+                    return;
+                }
+    
+                // Add the chatbot's response
+                chatbox.innerHTML += `
+                    <div class="chat incoming">
+                        <div class="chat-icon">
+                            <span class="material-symbols-outlined">smart_toy</span>
+                        </div>
+                        <div class="chat-text">
+                            <p>${currentStep.message}</p>
+                        </div>
+                    </div>`;
+                chatbox.scrollTo(0, chatbox.scrollHeight);
+    
+                // Update the options for the next step
+                dialogOptions.innerHTML = ''; // Clear previous buttons
+                currentStep.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option.label;
+                    button.onclick = () => handleOptionClick(option.label, option.next);
+                    dialogOptions.appendChild(button);
+                });
+            }, 1000); // 1-second delay
+        };
+    
+        const handleOptionClick = (label, next) => {
+            // Add the user's response to the chatbox
+            chatbox.innerHTML += `<div class="chat outgoing"><p>${label}</p></div>`;
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+    
+            // Load the next dialog step with a delay
+            loadDialog(next);
+        };
+    
+        chatbotToggler.addEventListener('click', () => {
+            chatbot.style.display = chatbot.style.display === 'none' ? 'flex' : 'none';
+            if (chatbot.style.display === 'flex') loadDialog('start');
+        });
+    
+        const closeChatbot = () => {
+                chatbot.style.display = 'none';
+            };
+    </script>
+    
+    
+    </body>
+    
+    </html>
+    
+
+    <div class="logout-container">
+        <form method="POST" action="{% url 'base:logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+    
+{% endblock content %}

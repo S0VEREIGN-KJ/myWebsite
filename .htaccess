@@ -1,0 +1,16 @@
+# Cache images, CSS, and JavaScript for 1 month
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType image/jpg "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Add Cache-Control headers for other assets
+<IfModule mod_headers.c>
+  Header set Cache-Control "max-age=2592000, public"
+</IfModule>

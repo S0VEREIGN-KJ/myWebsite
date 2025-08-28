@@ -1,0 +1,26 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+
+# Ignore node modules (if using Node.js)
+node_modules/
+
+# Ignore compiled files
+*.class
+*.exe
+*.dll
+
+# Ignore IDE/editor settings
+.vscode/
+.idea/
+
+# Ignore environment files
+.env
+
+*.mp4
+
+# Ignore XAMPP local files (if needed)
+/xamppfiles/
