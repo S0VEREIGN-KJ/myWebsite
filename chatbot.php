@@ -23,7 +23,7 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-        .chatbot-toggler {
+    .chatbot-toggler {
             overflow: auto;
             position: fixed;
             right: 75px;
@@ -79,7 +79,7 @@
     box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
                 0 32px 64px -48px rgba(0,0,0,0.5);
     transition: all 0.1s ease;
-    z-index: 3;
+    z-index: 9999999;
     border: 4px solid rgb(25, 0, 255);
     animation: compatibleGlow 3.5s ease-in-out infinite;
 }
@@ -563,39 +563,204 @@
   transform: scale(1);
   background-color: var(--clr-nav-hover);
 }
-/* For small mobile devices */
-@media screen and (max-width: 480px) {
-            .green-dot {
-        width: 0;
-        height: 0;
 
-        }
+
+
+
+/* IMPROVED MOBILE RESPONSIVE STYLES */
+
+/* Small mobile devices (up to 480px) */
+@media screen and (max-width: 480px) {
+    .green-dot {
+  margin-right: 0;  /* remove or adjust */
+    margin-top: 10px; /* optional smaller spacing */
+    background-color:rgba(0, 0, 0, 1);
+    }
+    
     .c-holder {
-    margin: 0;
-    height: auto;
+        margin: 0;
+        height: auto;
     }
-.project-description {
-    font-size: 24px;
-    max-width: 300px;
+    
+    .project-description {
+        font-size: 18px;
+        max-width: 280px;
     }
-    .close-btn-overlay {
-        font-size: 60px;
-        position: sticky;
-        margin-left: 240px
-    }
-    .chatbot {
-        width: calc(100vw - 40px);
-        right: 20px;
-        max-width: 340px;
-        height: 700px;
-        max-height: 700px;
-    }
-        .chatbot-description {
-        bottom: 30px;
-    }
+    
+
+    
+    /* Chatbot toggler improvements */
     .chatbot-toggler {
-        right: 20px;
+        right: 15px;
         bottom: 20px;
+        height: 55px;
+        width: 55px;
+        border-width: 3px;
+    }
+    
+    .chatbot-toggler img.toggler-img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Main chatbot container */
+    .chatbot {
+        width: calc(100vw - 20px);
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+        max-width: none;
+        height: calc(90vh - 40px);
+        max-height: calc(90vh - 40px);
+        border-radius: 10px;
+        transform-origin: center bottom;
+    }
+    
+    /* Header adjustments */
+    .chatbot header {
+        height: 70px;
+        padding: 10px;
+    }
+    
+    .header-text-wrapper {
+        flex: 1;
+        align-items: flex-start;
+    }
+    
+    .header-text {
+        font-size: 12px;
+        margin-left: 5px;
+    }
+    
+    .header-text2 {
+        font-size: 16px;
+        margin-left: 5px;
+    }
+    
+    .header-icon-wrapper {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .header-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Button positioning */
+    .chatbot header .minimize-btn {
+        right: 40px;
+        top: 15px;
+        font-size: 20px;
+    }
+    
+    .chatbot header .close-btn {
+        right: 10px;
+        top: 15px;
+        font-size: 20px;
+        padding: 3px;
+    }
+    
+    /* Chatbox adjustments */
+    .chatbot .chatbox {
+        height: calc(90vh - 200px);
+        padding: 15px 10px 80px;
+    }
+    
+    /* Message bubbles */
+    .chatbot .incoming p {
+        width: calc(100% - 50px);
+        max-width: calc(100vw - 80px);
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    
+    .chatbot .outgoing p {
+        max-width: 85%;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    
+    .chatbot .chat p {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    
+    /* Chat input area */
+    .chatbot .chat-input {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+    
+    .chat-input textarea {
+        height: 45px;
+        font-size: 0.9rem;
+        padding: 12px 8px 12px 0;
+    }
+    
+    .chat-input span {
+        height: 45px;
+        line-height: 45px;
+        font-size: 1.2em;
+    }
+    
+    /* Chat options */
+    .chat .dialog-options {
+        padding: 8px 5px;
+        gap: 8px;
+    }
+    
+    .chat .dialog-options button {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+    
+    /* Description tooltip */
+    .chatbot-description {
+        right: 80px;
+        bottom: 85px;
+        font-size: 12px;
+        padding: 6px 10px;
+        white-space: normal;
+        max-width: 150px;
+        text-align: center;
+    }
+    
+    /* Tooltip wrapper adjustments */
+    .tooltip-wrapper {
+        display: none; /* Hide on small mobile */
+    }
+}
+
+/* Larger phones / small tablets (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .green-dot {
+  margin-right: 0;  /* remove or adjust */
+    margin-top: 10px; /* optional smaller spacing */
+    background-color:rgba(0, 0, 0, 1);
+    }
+    
+    .c-holder {
+        margin: 0;
+        height: auto;
+    }
+    
+    .project-description {
+        font-size: 20px;
+        max-width: 350px;
+    }
+    
+    .close-btn-overlay {
+        font-size: 50px;
+        position: fixed;
+        right: 15px;
+        top: 15px;
+    }
+    
+    /* Chatbot toggler */
+    .chatbot-toggler {
+        right: 25px;
+        bottom: 25px;
         height: 60px;
         width: 60px;
     }
@@ -605,131 +770,117 @@
         height: 35px;
     }
     
-    .header-text2 {
-        font-size: 14pt;
-        margin-left: 5px;
-    }
-       .chatbot header .minimize-btn {
-        right: 50px;
-    }
-        .chatbot header .close-btn {
-        padding: 0;
-        right: 15px;
-    }
-        .chatbot .incoming p {
-        width: 300px;
-    }
-    
-}
-
-/* For bigger phones / small tablets */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-                .green-dot {
-        width: 0;
-        height: 0;
-                }
-    .c-holder {
-    margin: 0;
-    height: auto;
-    }
-.project-description {
-    font-size: 24px;
-    max-width: 300px;
-}
-    .close-btn-overlay {
-        font-size: 60px;
-        position: sticky;
-        margin-left: 240px
-    }
-        .chatbot-description {
-        bottom: 30px;
-    }
-    .header-text2 {
-        font-size: 18pt;
-        margin-left: 10px;
-    }
-    
-    .header-text {
-        margin-left: 10px;
-    }
-    
-    .chatbot header .minimize-btn {
-        right: 50px;
-    }
-    
-    .chatbot header .close-btn {
-        padding: 0;
-        right: 15px;
-    }
-    
-    .chatbot-description {
-        bottom: 50px;
-    }
-    
-    .chatbot-toggler {
-        right: 25px;
-        bottom: 25px;
-    }
-    
+    /* Main chatbot */
     .chatbot {
-        height: 700px;
+        width: calc(100vw - 40px);
+        max-width: 400px;
         right: 20px;
-        width: 350px;
+        height: calc(90vh - 60px);
+        max-height: 650px;
     }
-    .chatbot .incoming p {
-        width: 300px;
-    }
-}
-
-/* For desktops and larger screens */
-@media screen and (min-width: 769px) {
-                .green-dot {
-        width: 0;
-        height: 0;
-                }
-    .c-holder {
-    margin: 0;
-    height: auto;
-    }
-.project-description {
-    font-size: 24px;
-    max-width: 300px;
-}
-    .header-text2 {
-        font-size: 18pt;
-        margin-left: 10px;
+    
+    /* Header */
+    .chatbot header {
+        height: 80px;
     }
     
     .header-text {
-        margin-left: 10px;
+        font-size: 13px;
+        margin-left: 8px;
     }
     
+    .header-text2 {
+        font-size: 18px;
+        margin-left: 8px;
+    }
+    
+    .header-icon-wrapper {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .header-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Buttons */
     .chatbot header .minimize-btn {
         right: 50px;
+        top: 18px;
     }
     
     .chatbot header .close-btn {
-        padding: 0;
         right: 15px;
+        top: 18px;
     }
     
+    /* Chatbox */
+    .chatbot .chatbox {
+        height: calc(100% - 170px);
+        padding: 20px 15px 90px;
+    }
+    
+    /* Messages */
+    .chatbot .incoming p {
+        width: calc(100% - 40px);
+        max-width: 320px;
+        font-size: 0.92rem;
+    }
+    
+    .chatbot .outgoing p {
+        font-size: 0.92rem;
+    }
+    
+    /* Description */
     .chatbot-description {
-        bottom: 50px;
+        right: 95px;
+        bottom: 90px;
+        font-size: 13px;
+    }
+    
+    /* Tooltip adjustments */
+    .tooltip-wrapper {
+        margin-right: 200px;
+        margin-top: -50px;
+    }
+}
+
+/* Desktops and larger screens (769px+) */
+@media screen and (min-width: 769px) {
+    .green-dot {
+  margin-right: 0;  /* remove or adjust */
+    margin-top: 10px; /* optional smaller spacing */
+    background-color:rgba(0, 0, 0, 1);
+    }
+    
+    /* Keep original desktop styles */
+    .chatbot {
+        width: 440px;
+        height: 740px;
+        max-height: 740px;
+        right: 70px;
     }
     
     .chatbot-toggler {
         right: 75px;
         bottom: 75px;
+        height: 70px;
+        width: 70px;
     }
     
-    .chatbot {
-        height: 740px;
-        right: 70px;
-        width: 440px;
-        max-height: 740px;
+    .chatbot .incoming p {
+        width: 360px;
     }
-        .chatbot .incoming p {
-        width: 300px;
+    
+    .header-text2 {
+        font-size: 30px;
+        margin-left: 25px;
+    }
+    
+    .chatbot-description {
+        right: 130px;
+        bottom: 130px;
     }
 }
 

@@ -39,7 +39,7 @@ nav{
     position: fixed;
     top: 0;
     background-color: black;
-    z-index: 10000;
+    z-index: 999;
     padding: 0 10px;
     transition: all 0.3s ease;
 }
@@ -169,7 +169,7 @@ section .main-container{
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 0 50px #b74b4b;
-    z-index: 1000;
+    z-index: 4;
     flex-shrink: 0;
 }
 
@@ -722,7 +722,7 @@ footer .text span a:hover{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
+    z-index: 99999999;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -871,7 +871,12 @@ footer .text span a:hover{
     .projects .ticket-row {
         grid-template-columns: 1fr;
     }
-
+    .close-btn-overlay {
+        font-size: 40px;
+        position: sticky;
+               margin-left: 240px;
+        top: 10px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -901,7 +906,12 @@ footer .text span a:hover{
         max-width: 95%;
         padding: 15px;
     }
-
+    .close-btn-overlay {
+        font-size: 40px;
+        position: sticky;
+        margin-left: 240px;
+        top: 10px;
+    }
     .overlay-images{
         grid-template-columns: 1fr;
     }
