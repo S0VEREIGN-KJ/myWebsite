@@ -563,6 +563,175 @@
   transform: scale(1);
   background-color: var(--clr-nav-hover);
 }
+/* For small mobile devices */
+@media screen and (max-width: 480px) {
+            .green-dot {
+        width: 0;
+        height: 0;
+
+        }
+    .c-holder {
+    margin: 0;
+    height: auto;
+    }
+.project-description {
+    font-size: 24px;
+    max-width: 300px;
+    }
+    .close-btn-overlay {
+        font-size: 60px;
+        position: sticky;
+        margin-left: 240px
+    }
+    .chatbot {
+        width: calc(100vw - 40px);
+        right: 20px;
+        max-width: 340px;
+        height: 700px;
+        max-height: 700px;
+    }
+        .chatbot-description {
+        bottom: 30px;
+    }
+    .chatbot-toggler {
+        right: 20px;
+        bottom: 20px;
+        height: 60px;
+        width: 60px;
+    }
+    
+    .chatbot-toggler img.toggler-img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .header-text2 {
+        font-size: 14pt;
+        margin-left: 5px;
+    }
+       .chatbot header .minimize-btn {
+        right: 50px;
+    }
+        .chatbot header .close-btn {
+        padding: 0;
+        right: 15px;
+    }
+        .chatbot .incoming p {
+        width: 300px;
+    }
+    
+}
+
+/* For bigger phones / small tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+                .green-dot {
+        width: 0;
+        height: 0;
+                }
+    .c-holder {
+    margin: 0;
+    height: auto;
+    }
+.project-description {
+    font-size: 24px;
+    max-width: 300px;
+}
+    .close-btn-overlay {
+        font-size: 60px;
+        position: sticky;
+        margin-left: 240px
+    }
+        .chatbot-description {
+        bottom: 30px;
+    }
+    .header-text2 {
+        font-size: 18pt;
+        margin-left: 10px;
+    }
+    
+    .header-text {
+        margin-left: 10px;
+    }
+    
+    .chatbot header .minimize-btn {
+        right: 50px;
+    }
+    
+    .chatbot header .close-btn {
+        padding: 0;
+        right: 15px;
+    }
+    
+    .chatbot-description {
+        bottom: 50px;
+    }
+    
+    .chatbot-toggler {
+        right: 25px;
+        bottom: 25px;
+    }
+    
+    .chatbot {
+        height: 700px;
+        right: 20px;
+        width: 350px;
+    }
+    .chatbot .incoming p {
+        width: 300px;
+    }
+}
+
+/* For desktops and larger screens */
+@media screen and (min-width: 769px) {
+                .green-dot {
+        width: 0;
+        height: 0;
+                }
+    .c-holder {
+    margin: 0;
+    height: auto;
+    }
+.project-description {
+    font-size: 24px;
+    max-width: 300px;
+}
+    .header-text2 {
+        font-size: 18pt;
+        margin-left: 10px;
+    }
+    
+    .header-text {
+        margin-left: 10px;
+    }
+    
+    .chatbot header .minimize-btn {
+        right: 50px;
+    }
+    
+    .chatbot header .close-btn {
+        padding: 0;
+        right: 15px;
+    }
+    
+    .chatbot-description {
+        bottom: 50px;
+    }
+    
+    .chatbot-toggler {
+        right: 75px;
+        bottom: 75px;
+    }
+    
+    .chatbot {
+        height: 740px;
+        right: 70px;
+        width: 440px;
+        max-height: 740px;
+    }
+        .chatbot .incoming p {
+        width: 300px;
+    }
+}
 
     </style>
 </head>
@@ -583,7 +752,7 @@
 
                 <div class="header-text-wrapper">
                 <p class="header-text2">KJ CHATBOT</p>
-                    <p class="header-text" style="margin-left:40px;">A Rule-Based-Chatbot Project</p>
+                    <p class="header-text">A Rule-Based-Chatbot Project</p>
                     <span class="green-dot"></span>
                
                 </div>

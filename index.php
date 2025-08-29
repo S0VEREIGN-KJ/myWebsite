@@ -33,7 +33,7 @@
 }
  </style>
  <body>
-    
+
 <!--navigation menu-->
 <nav>
     <div class="nav-container">
@@ -93,7 +93,8 @@
         </div>
     </div>
 </section>
-
+<br>
+<br>
 <!--About Section Start-->
 <section class="about" id="about">
     <div class="content">
@@ -102,7 +103,7 @@
             <div class="left" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">
                 <img src="main2.jpg" alt=""/>
             </div>
-            <div class="right"style="margin-left:50px;" >
+            <div class="right">
                 <div class="topic" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="200">Adaptability is a Key</div>
                 <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="300">
                         A motivated Fresh BSIT graduate with adaptability, teamwork, and flexibility. Experienced in managing academic projects, 
@@ -190,16 +191,61 @@
         <div class="title" data-aos="fade-up" data-aos-duration="1500"><span>Certificates</span></div>
 
         <div class="c-holder2">
+    <div class="nc2-text" 
+         data-aos="fade-right" 
+         data-aos-duration="1500" 
+         data-aos-delay="1600" 
+         style="
+            position: absolute; 
+            left: 50%; 
+            transform: translateX(-50%);
+            color: #fff; 
+            font-size: 10pt;
+            font-weight: bold;
+            background: rgba(0,0,0,0.4); 
+            padding: 3px 8px; 
+            border-radius: 5px;">
+        Valid: 2019 - 2024
+    </div>
             <img src="certificates/nc2.jpg" loading="lazy" class="c-holder2 img"   data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1600">
             <div class="c-body">
+                
                 <h1 class="c-title">National Certificate II in Computer System Servicing</h1>
                 <p class="c-sub-title" style="text-decoration: underline; font-weight: bold;">Certified Computer Systems Servicing Professional</p>
-                <p class="c-info">Issued on: October 28, 2019
-                </p>
-                <p class="c-info">Valid Until: October 27, 2024
-                </p>
+                <p class="c-info">TESDA CERTIFIED</p>
+                <p class="c-info">Issued on: October 28, 2019</p>
+                <p class="c-info">Valid Until: October 27, 2024</p>
                 </div>
             </div>
+
+        <div class="c-holder2">
+    <div class="nc2-text" 
+         data-aos="fade-right" 
+         data-aos-duration="1500" 
+         data-aos-delay="1600" 
+         style="
+            position: absolute; 
+            left: 50%; 
+            transform: translateX(-50%);
+            color: #fff; 
+            font-size: 10pt;
+            font-weight: bold;
+            background: rgba(0,0,0,0.4); 
+            padding: 3px 8px; 
+            border-radius: 5px;">
+        Valid: 2025 - 2030
+    </div>
+            <img src="certificates/nc2.png" loading="lazy" class="c-holder2 img"   data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1600">
+            <div class="c-body">
+                
+                <h1 class="c-title">National Certificate II in Computer System Servicing</h1>
+                <p class="c-sub-title" style="text-decoration: underline; font-weight: bold;">Certified Computer Systems Servicing Professional</p>
+                <p class="c-info">TESDA CERTIFIED</p>
+                <p class="c-info">Issued on: August 27, 2025</p>
+                <p class="c-info">Valid Until: August 26, 2030</p>
+                </div>
+            </div>
+
 
         <div class="c-holder">
             <img src="certificates/MSoffice.jpg" loading="lazy" class="c-holder img" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="50">
@@ -353,15 +399,18 @@
             </div>
             <div class="box">
                 <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">Computer System Servicing 
+                </div>
+                
+                <div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300" style="font-size: 16pt;">NATIONAL CERTIFICATE II
                     <i class="fa-solid fa-check-circle" style="color: #28a745; margin-left: 5px;"></i>
                 </div>
-                <div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300" style="font-size: 28pt;">National Certificate II</div>
+                
                 <!-- <p style="font-size: 12px; color: #888;" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">Certification expired on [October, 2024].</p> -->
             </div>
               <div class="box">
-                <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">Basic
+                <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">BASIC
                 <i class="fa-solid fa-check-circle" style="color: #28a745; margin-left: 5px;"></i></div>
-                <div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300" style="font-size:28pt;">Microsoft Office Productivity Tools</div>
+                <div class="per" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300" style="font-size:16pt;">Microsoft Office Productivity Tools</div>
             </div>
         </div>
     </div>
@@ -623,13 +672,21 @@ const projectData = {
 
 // Function to convert URLs in text to clickable links
 function makeLinksClickable(text) {
-    // Regular expression to match URLs
     const urlRegex = /(https?:\/\/[^\s]+)/g;
-    
+
+    // Check if current screen matches mobile media query
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    // Define styles for desktop and mobile
+    const linkStyle = isMobile
+        ? "color: #4CAF50; text-decoration: underline; font-weight: bold; font-size: 12pt;"
+        : "color: #4CAF50; text-decoration: underline; font-weight: bold; font-size: 15pt;";
+
     return text.replace(urlRegex, (url) => {
-        return `<a href="${url}" target="_blank" style="color: #4CAF50; text-decoration: underline; font-weight: bold; font-size:15pt;">${url}</a>`;
+        return `<a href="${url}" target="_blank" style="${linkStyle}">${url}</a>`;
     });
 }
+
 
 projects.forEach((project) => {
     project.addEventListener("click", () => {
@@ -714,7 +771,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
  </body>
-<div id="rule-based-chatbot">
+    <div class="rule-based-chatbot" id="rule-based-chatbot"> 
   <?php include 'chatbot.php'; ?>
 </div>
 

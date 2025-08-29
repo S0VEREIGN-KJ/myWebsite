@@ -50,7 +50,6 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -286,6 +285,9 @@ section .content{
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    flex-direction: column;      /* stack items vertically */
+    justify-content: center;     /* center vertically */
+    text-align: center;          /* center text inside */
     font-family: 'Poppins', sans-serif;
 }
 
@@ -784,7 +786,7 @@ footer .text span a:hover{
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     /* Navigation */
     .nav-container .links{
         display: none;
@@ -795,13 +797,16 @@ footer .text span a:hover{
         opacity: 1;
         pointer-events: visible;
     }
-
+    section{
+        margin-bottom: 150px;
+    }
     /* Hero Section */
     section .main-container{
         flex-direction: column;
         text-align: center;
-        padding: 100px 20px 20px;
+        padding: 0 20px 20px;
         gap: 30px;
+
     }
 
     .main-container .content{
@@ -866,23 +871,13 @@ footer .text span a:hover{
     .projects .ticket-row {
         grid-template-columns: 1fr;
     }
-        .chatbot-description{
-        bottom: 100px
-    }
-    .chatbot-toggler{
-        right: 50px;
-        bottom: 50px;
-    }
-        .chatbot{
-        right: 20px;
-        width: 420px;
-        z-index: 9999;
-    }
+
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     section{
-        padding: 70px 15px 15px;
+        padding: 0 15px 15px;
+        margin-bottom: 150px;
     }
 
     .main-container .image{
@@ -910,39 +905,9 @@ footer .text span a:hover{
     .overlay-images{
         grid-template-columns: 1fr;
     }
-        .chatbot-description{
-        bottom: 100px
-    }
-    .chatbot-toggler{
-        right: 50px;
-        bottom: 50px;
-    }
-        .chatbot{
-        right: 20px;
-        width: 420px;
-        z-index: 9999;
-    }
 }
 
 /* Utility Classes for Better Mobile Experience */
 .text-center-mobile {
     text-align: center;
-}
-
-@media (min-width: 769px) {
-    .text-center-mobile {
-        text-align: left;
-    }
-    .chatbot-description{
-        bottom: 100px
-    }
-    .chatbot-toggler{
-        right: 50px;
-        bottom: 50px;
-    }
-        .chatbot{
-        right: 20px;
-        width: 420px;
-        z-index: 9999;
-    }
 }
