@@ -55,11 +55,14 @@
 
     <div class="dropdown">
         <div class="links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Skills</a>
-            <a href="#">Service</a>
-            <a href="#">Contact</a>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#awards_recognitions">Awards and Recognition</a>
+            <a href="#certificate">Certificates</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#services">Service</a>
+            <a href="#contact">Contact</a>
             <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
         </div>
     </div>
@@ -130,11 +133,11 @@
             <div class="c-body">
                 <h1 class="c-title">DOST Project LODIxR Internship</h1>
                 <p class="c-sub-title" style="text-decoration: underline; font-weight: bold;">539 hrs On-the-Job-Training</p>
-                <p class="c-info">Project DOST LODIxR (“League of Developers Initiative by the Regions”) is a Department of Science and Technology 
+                <p class="c-info">Project DOST LODIxR (“League of Developers Initiative by the Regions”) is a DOST 
                     initiative that provides DOST scholars in IT-related programs with real-world training opportunities—such as internships—to strengthen 
                     their professional skills while supporting regional digital transformation efforts
                 </p>
-                <p class="c-info" style="font-size:15pt; font-weight:bold; text-decoration:underline;">DOST-CAR LODIxR Intern <br> 1st BATCH 2025
+                <p class="c-info" style="font-size:14pt; font-weight:bold; text-decoration:underline;">DOST-CAR LODIxR Intern <br> 1st BATCH 2025
                 </p>
             </div>
         </div>
@@ -358,10 +361,10 @@
                     constantly learning and adapting to new tools and programming languages.  <br>Education empowers us to solve real-world problems, 
                     innovate through software  <br>development, and stay ahead in a dynamic digital landscape. Technology is  <br>an ever-evolving field, where learning is a continuous journey </p>
                 <div class="experience" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600">
-                <div class="num">2</div>
+                <div class="num">   </div>
                 <div class="exp">
-                    Years Of<br/>
-                    Experience
+                    <!-- Years Of<br/> -->
+                    <!-- Experience -->
                 </div>
             </div>
         </div>

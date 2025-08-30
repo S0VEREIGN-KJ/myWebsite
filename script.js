@@ -1,6 +1,8 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const typewriterText = document.querySelector(".typewriter-text");
-    const words = ["IT GRADUATE","DOST-CAR LODIxR Intern", "COMPUTER LITERATE", "PHOTO EDITOR", "VIDEO EDITOR" ]; // Add the words you want to cycle through
+    const words = ["BSIT GRADUATE","DOST-CAR LODIxR Intern", "COMPUTER LITERATE","TESDA CSS NC2 HOLDER", "PHOTO EDITOR", "VIDEO EDITOR" ]; // Add the words you want to cycle through
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -34,4 +36,36 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         typeEffect();
     }, initialDelay);
+});
+
+const hamburg = document.querySelector(".hamburg");
+const dropdown = document.querySelector(".dropdown");
+const cancelBtn = document.querySelector(".cancel");
+const menuLinks = document.querySelectorAll(".dropdown .links a");
+
+
+
+// Toggle when clicking hamburger
+hamburg.addEventListener("click", (e) => {
+  e.stopPropagation();
+  dropdown.classList.toggle("active");
+});
+
+// Close when clicking outside
+document.addEventListener("click", (e) => {
+  if (!dropdown.contains(e.target) && !hamburg.contains(e.target)) {
+    dropdown.classList.remove("active");
+  }
+});
+
+// Close when clicking X button
+cancelBtn.addEventListener("click", () => {
+  dropdown.classList.remove("active");
+});
+
+// Close when clicking any menu link
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    dropdown.classList.remove("active");
+  });
 });

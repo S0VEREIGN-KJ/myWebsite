@@ -80,6 +80,7 @@ nav{
 
 .nav-container .links{
     display: flex;
+    margin-right: 100px;
 }
 
 .nav-container .links a{
@@ -115,24 +116,31 @@ nav{
 .nav-container .links a.active::before {
     width: 100%;
 }
-
-.dropdown{
+.dropdown {
     z-index: 100;
-    position: absolute;
+    position: fixed; /* stick to screen */
     top: 0;
-    transform: translateY(-500px);
-    width: 100%;
-    height: auto;
+    right: 0;
+    transform: translateX(100%); /* hidden to the right */
+    width: 250px; /* adjust size */
+    height: 100%; /* full height like a sidebar */
     backdrop-filter: blur(4px) brightness(40%);
-    box-shadow: 0 0 20px black;
-    transition: 0.2s linear;
+    box-shadow: -2px 0 20px black;
+    transition: 0.3s ease-in-out;
 }
 
-.dropdown .links{
+/* When active */
+.dropdown.active {
+    transform: translateX(0); /* slide into view */
+}
+
+.dropdown .links {
+    display: flex;
     flex-direction: column;
+    margin-top: 50px;
 }
 
-.dropdown .links a{
+.dropdown .links a {
     display: flex;
     color: white;
     text-decoration: none;
@@ -143,10 +151,17 @@ nav{
     margin: 0;
 }
 
-.dropdown .links a:hover{
+.dropdown .links a:hover {
     background-color: #b74b4b;
 }
-
+.dropdown .cancel {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
 section{
     width: 100%;
     min-height: 90vh;
@@ -839,7 +854,15 @@ footer .text span a:hover{
     .about .left img{
         max-width: 300px;
     }
-
+    .c-title{
+    font-size: 15pt;
+}
+.c-sub-title {
+    font-size: 12pt;
+}
+.c-info{
+    font-size: 12pt;
+}
     /* Skills Section */
     .skills .skills-details{
         flex-direction: column;
@@ -901,7 +924,15 @@ footer .text span a:hover{
     .skills-details .boxes{
         grid-template-columns: repeat(2, 1fr);
     }
-
+    .c-title{
+    font-size: 15pt;
+}
+.c-sub-title {
+    font-size: 12pt;
+}
+.awards_recognitions .c-info{
+    display: none;
+}
     .overlay-content{
         max-width: 95%;
         padding: 15px;

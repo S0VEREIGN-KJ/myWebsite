@@ -718,7 +718,7 @@
     /* Description tooltip */
     .chatbot-description {
         right: 80px;
-        bottom: 85px;
+        bottom: 50px;
         font-size: 12px;
         padding: 6px 10px;
         white-space: normal;
@@ -835,7 +835,7 @@
     /* Description */
     .chatbot-description {
         right: 95px;
-        bottom: 90px;
+        bottom: 50px;
         font-size: 13px;
     }
     
@@ -880,7 +880,6 @@
     
     .chatbot-description {
         right: 130px;
-        bottom: 130px;
     }
 }
 
